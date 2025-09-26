@@ -21,8 +21,14 @@ default: &default
 
 
 development:
-  <<: *default
-  database: mysu_development
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  database: su-staging
+  username: postgres
+  password: RL)5%C@>t_3@ZnmX@
+  host: durable-jet-473311-g3:europe-west1:su-staging
+  port: <%= ENV.fetch('DB_PORT', 5432) %>
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -80,6 +86,17 @@ test:
 #
 production:
   <<: *default
-  database: mysu_production
-  username: mysu
-  password: <%= ENV["MYSU_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  database: su-staging
+  username: postgres
+  password: RL)5%C@>t_3@ZnmX@
+  host: durable-jet-473311-g3:europe-west1:su-staging
+  port: <%= ENV.fetch('DB_PORT', 5432) %>
+  # database: mysu_production
+  # username: mysu
+  # password: <%= ENV["MYSU_DATABASE_PASSWORD"] %>
+# RL)5%C@>t_3@ZnmX postgres  su-staging
+
+# DATABASE_URL="postgresql://postgres:RL)5%C@>t_3@ZnmX@/su-staging?host=durable-jet-473311-g3:europe-west1:su-staging"
