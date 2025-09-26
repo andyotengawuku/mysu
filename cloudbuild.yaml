@@ -1,0 +1,8 @@
+steps:
+  - name: gcr.io/k8s-skaffold/pack
+    args:
+      - build
+      - europe-west1-docker.pkg.dev/YOUR_PROJECT/YOUR_REPO/YOUR_IMAGE:TAG
+      - --builder=gcr.io/buildpacks/builder
+    env:
+      - GOOGLE_ENTRYPOINT=bundle exec puma -C config/puma.rb
